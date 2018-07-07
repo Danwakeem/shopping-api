@@ -1,4 +1,4 @@
-const mongo = require('./../../mongo.lb');
+const mongo = require('./../../shared/mongo.lb');
 const _ = require('lodash');
 const mongoClient = require('mongodb').MongoClient;
 

@@ -10,8 +10,8 @@
     "test": "mocha tests/* --recursive",
     "all": "concurrently \"npm run test:watch\" \"npm run lint:watch\"",
     "zip": "node_modules/gulp/bin/gulp.js zip",
-    "find:find": "serverless-sim ./find/index --serverlessConfig ./dev.config.json",
-    "id:id": "serverless-sim ./id/index --serverlessConfig ./dev.config.json"
+    "find:find": "serverless-sim ./GET/find/index --serverlessConfig ./dev.config.json",
+    "id:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json"
   },
   "author": "Danwwakeem",
   "license": "ISC",
@@ -24,6 +24,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
     "eslint-watch": "^3.1.5",
+    "gulp-if": "^2.0.2",
+    "gulp-replace": "^1.0.0",
     "lodash": "^4.17.10",
     "mocha": "^5.1.1",
     "serverless-sim": "^0.1.5",
@@ -31,7 +33,6 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-if": "^2.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-zip": "^4.1.0",
     "mongodb": "^3.1.1"
