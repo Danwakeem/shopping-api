@@ -6,7 +6,7 @@ Endpoints to convert
 
 * [x] GET: by userId
 * [x] GET: by ID
-* [] DELETE: by Id 
-* [] PUT: Update by ID
-* [] PUT: Update by ID (shared)
-* [] POST: Create list
+* [ ] DELETE: by Id 
+* [ ] PUT: Update by ID
+* [ ] PUT: Update by ID (shared)
+* [ ] POST: Create list
