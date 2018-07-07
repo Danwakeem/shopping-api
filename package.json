@@ -1,0 +1,39 @@
+{
+  "name": "shopping-api",
+  "version": "1.0.0",
+  "description": "This application is moving data from the message queue to salesforce",
+  "main": "index.js",
+  "scripts": {
+    "lint": "esw .",
+    "lint:watch": "esw -w .",
+    "test:watch": "mocha tests/* --recursive --watch",
+    "test": "mocha tests/* --recursive",
+    "all": "concurrently \"npm run test:watch\" \"npm run lint:watch\"",
+    "zip": "node_modules/gulp/bin/gulp.js zip",
+    "find:find": "serverless-sim ./find/index --serverlessConfig ./dev.config.json",
+    "id:id": "serverless-sim ./id/index --serverlessConfig ./dev.config.json"
+  },
+  "author": "Danwwakeem",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-watch": "^3.1.5",
+    "lodash": "^4.17.10",
+    "mocha": "^5.1.1",
+    "serverless-sim": "^0.1.5",
+    "should": "^13.1.0"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-zip": "^4.1.0",
+    "mongodb": "^3.1.1"
+  }
+}
