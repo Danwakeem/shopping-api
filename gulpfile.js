@@ -15,7 +15,10 @@ gulp.task('zip:find:find', () => zipper('GET/find'));
 
 gulp.task('zip:id:id', () => zipper('GET/id'));
 
+gulp.task('zip:DELETE/id:id', () => zipper('DELETE/id'));
+
 gulp.task('zip', [
+  'zip:DELETE/id:id',
   'zip:id:id',
   'zip:find:find',
 ]);

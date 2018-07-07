@@ -22,3 +22,5 @@ wsk package update "${OPWNWHISK_PACKAGE}" -P "${WSK_CONFIG}"
 wsk action update "${OPWNWHISK_PACKAGE}/find" build/GET/find.zip --kind nodejs:8 -t 300000
 
 wsk action update "${OPWNWHISK_PACKAGE}/id" build/GET/id.zip --kind nodejs:8 -t 300000
+
+wsk action update "${OPWNWHISK_PACKAGE}/id" build/DELETE/id.zip --kind nodejs:8 -t 300000

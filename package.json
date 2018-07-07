@@ -10,8 +10,9 @@
     "test": "mocha tests/* --recursive",
     "all": "concurrently \"npm run test:watch\" \"npm run lint:watch\"",
     "zip": "node_modules/gulp/bin/gulp.js zip",
-    "find:find": "serverless-sim ./GET/find/index --serverlessConfig ./dev.config.json",
-    "id:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json"
+    "get:find": "serverless-sim ./GET/find/index --serverlessConfig ./dev.config.json",
+    "get:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json",
+    "delete:id": "serverless-sim ./DELETE/id/index --serverlessConfig ./dev.config.json"
   },
   "author": "Danwwakeem",
   "license": "ISC",

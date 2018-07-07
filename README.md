@@ -7,7 +7,7 @@ Endpoints to convert
 * [x] Convert Loopback Mongo Query generator to function
 * [x] GET: by userId
 * [x] GET: by ID
-* [ ] DELETE: by Id 
+* [x] DELETE: by Id 
 * [ ] PUT: Update by ID
 * [ ] PUT: Update by ID (shared)
 * [ ] POST: Create list
