@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "list": {
+    "dataSource": "shopping",
+    "public": true
+  },
+  "lists": {
+    "dataSource": "shopping",
+    "public": true
+  }
+}

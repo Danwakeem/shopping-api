@@ -1,0 +1,23 @@
+{
+  "name": "lists",
+  "plural": "lists",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "list": {
+      "type": "object",
+      "required": true
+    },
+    "uid": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
