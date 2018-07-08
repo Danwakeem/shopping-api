@@ -1,6 +1,12 @@
 const { MongoClient, ObjectID } = require('mongodb');
 const _ = require('lodash');
 
+const parseUserId = (params) => {
+  if (!('__ow_headers' in params)) return Promise.reject({ message: 'Missing headers' });
+  params.id = params.__ow_headers['x-forwarded-url'].split('/').pop();
+  return Promise.resolve(params);
+};
+
 const queryDB = (chain) => {
   const db = chain.db.db('shopping');
   const collection = db.collection('list');
@@ -15,7 +21,8 @@ const closeConnection = (chain) => {
   return Promise.resolve(chain.data);
 };
 
-const main = params => MongoClient.connect(params.mongo)
+const main = params => parseUserId(params)
+  .then(() => MongoClient.connect(params.mongo))
   .then(db => ({ db, params }))
   .then(queryDB)
   .then(closeConnection);
