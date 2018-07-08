@@ -6,7 +6,7 @@ const queryDB = (chain) => {
   const collection = db.collection('list');
   const id = '59c777e280b3da060e55ce61';
 
-  return collection.findOne(ObjectID(id))
+  return collection.findOne(ObjectID(chain.params.id))
     .then(data => _.merge(chain, { data }));
 };
 
@@ -16,7 +16,7 @@ const closeConnection = (chain) => {
 };
 
 const main = params => MongoClient.connect(params.mongo)
-  .then(db => ({ db }))
+  .then(db => ({ db, params }))
   .then(queryDB)
   .then(closeConnection);
 

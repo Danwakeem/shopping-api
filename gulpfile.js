@@ -17,7 +17,13 @@ gulp.task('zip:id:id', () => zipper('GET/id'));
 
 gulp.task('zip:DELETE/id:id', () => zipper('DELETE/id'));
 
+gulp.task('zip:POST/create:create', () => zipper('POST/create'));
+
+gulp.task('zip:PUT/id:id', () => zipper('PUT/id'));
+
 gulp.task('zip', [
+  'zip:PUT/id:id',
+  'zip:POST/create:create',
   'zip:DELETE/id:id',
   'zip:id:id',
   'zip:find:find',
