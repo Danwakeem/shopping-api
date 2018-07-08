@@ -11,7 +11,7 @@
     "all": "concurrently \"npm run test:watch\" \"npm run lint:watch\"",
     "zip": "node_modules/gulp/bin/gulp.js zip",
     "get:find": "serverless-sim ./GET/find/index --serverlessConfig ./dev.config.json",
-    "get:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json",
+    "get:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json --param id 59c777e280b3da060e55ce61",
     "delete:id": "serverless-sim ./DELETE/id/index --serverlessConfig ./dev.config.json",
     "post:create": "serverless-sim ./POST/create/index --serverlessConfig ./dev.config.json",
     "put:id": "serverless-sim ./PUT/id/index --serverlessConfig ./dev.config.json"

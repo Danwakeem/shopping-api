@@ -3,6 +3,7 @@ const _ = require('lodash');
 const mongoClient = require('mongodb').MongoClient;
 
 const parseUserId = (params) => {
+  if ('userId' in params) return Promise.resolve(params);
   if (!('__ow_headers' in params)) return Promise.reject({ message: 'Missing headers' });
   params.userId = params.__ow_headers['x-forwarded-url'].split('/').pop();
   return Promise.resolve(params);
