@@ -20,14 +20,13 @@ const queryDB = (chain) => {
       ],
     },
   });
-  console.log(query);
   return collection.find(query).toArray()
     .then(data => _.merge(chain, { data }));
 };
 
 const closeConnection = (chain) => {
   chain.db.close();
-  return Promise.resolve(chain.data);
+  return Promise.resolve({ data: chain.data });
 };
 
 const main = params => parseUserId(params)
