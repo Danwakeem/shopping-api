@@ -74,7 +74,7 @@ const buildWhere = (where) => {
       if (Array.isArray(cond)) {
         cond = cond.map(c => buildWhere(c));
       }
-      query[`'$${k}`] = cond;
+      query[`$${k}`] = cond;
       delete query[k];
       return;
     }

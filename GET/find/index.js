@@ -16,10 +16,11 @@ const queryDB = (chain) => {
     where: {
       or: [
         { userId: chain.params.userId },
-        { sharedWith: userId },
+        { sharedWith: chain.params.userId },
       ],
     },
   });
+  console.log(query);
   return collection.find(query).toArray()
     .then(data => _.merge(chain, { data }));
 };

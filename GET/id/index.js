@@ -11,7 +11,6 @@ const parseId = (params) => {
 const queryDB = (chain) => {
   const db = chain.db.db('shopping');
   const collection = db.collection('list');
-  const id = '59c777e280b3da060e55ce61';
 
   return collection.findOne(ObjectID(chain.params.id))
     .then(data => _.merge(chain, { data }));
