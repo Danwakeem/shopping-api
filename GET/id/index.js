@@ -23,12 +23,9 @@ const closeConnection = (chain) => {
 };
 
 const main = params => parseId(params)
-  .then(p => ({ params, p }));
-  /*
   .then(() => MongoClient.connect(params.mongo))
   .then(db => ({ db, params }))
   .then(queryDB)
   .then(closeConnection);
-  */
 
 exports.main = main;
