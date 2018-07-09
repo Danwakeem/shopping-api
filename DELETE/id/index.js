@@ -12,13 +12,17 @@ const queryDB = (chain) => {
   const db = chain.db.db('shopping');
   const collection = db.collection('list');
 
-  return collection.deleteOne(ObjectID(chain.params.id))
+  const filter = {
+    _id: ObjectID(chain.params.id),
+  };
+
+  return collection.deleteOne(filter)
     .then(data => _.merge(chain, { data }));
 };
 
 const closeConnection = (chain) => {
   chain.db.close();
-  return Promise.resolve(chain.data);
+  return Promise.resolve({ id: chain.params.id, success: true });
 };
 
 const main = params => parseId(params)
