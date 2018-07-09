@@ -12,8 +12,13 @@ const updateDoc = (chain) => {
   const db = chain.db.db('shopping');
   const collection = db.collection('list');
 
-  return collection.update(ObjectID(chain.params.doc.id), chain.params.doc)
-    .then(data => _.merge(chain, { data }));
+  chain.params.doc._id = ObjectID(chain.params.id);
+  const selector = {
+    _id: ObjectID(chain.params.id),
+  };
+
+  return collection.update(selector, chain.params.doc)
+    .then(() => _.merge(chain, { data: chain.params.doc }));
 };
 
 const closeConnection = (chain) => {

@@ -14,7 +14,7 @@
     "get:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json --param id 5b42b39a3fdc6f0007cbd82e",
     "delete:id": "serverless-sim ./DELETE/id/index --serverlessConfig ./dev.config.json --param id 5b42b7bc89205b00061e9986",
     "post:create": "serverless-sim ./POST/create/index --serverlessConfig ./dev.config.json",
-    "put:id": "serverless-sim ./PUT/id/index --serverlessConfig ./dev.config.json"
+    "put:id": "serverless-sim ./PUT/id/index --serverlessConfig ./dev.config.json --param id 5b42baedb18b1e0006a4e045"
   },
   "author": "Danwakeem",
   "license": "ISC",
