@@ -22,4 +22,9 @@ const main = params => parseId(params)
   .then(queryDB)
   .then(returnData);
 
-exports.main = main;
+module.exports = {
+  main,
+  parseId,
+  queryDB,
+  returnData,
+};

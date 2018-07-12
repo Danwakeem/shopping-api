@@ -42,4 +42,11 @@ const main = params => parseId(params)
   .then(updateDoc)
   .then(returnData);
 
-exports.main = main;
+module.exports = {
+  main,
+  parseId,
+  getRevId,
+  fixAPIEmptyArray,
+  updateDoc,
+  returnData,
+};

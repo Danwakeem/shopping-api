@@ -31,4 +31,10 @@ const main = params => parseId(params)
   .then(destroyDoc)
   .then(returnData);
 
-exports.main = main;
+module.exports = {
+  main,
+  parseId,
+  getDoc,
+  destroyDoc,
+  returnData,
+};

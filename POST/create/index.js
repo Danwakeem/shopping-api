@@ -8,7 +8,7 @@ const fixAPIEmptyArray = (doc) => {
 };
 
 const createDoc = (chain) => {
-  const cloudant = new Cloudant({ url: chain.params.cloudantUrl, plugins: 'promises' });
+  const cloudant = Cloudant({ url: chain.params.cloudantUrl, plugins: 'promises' });
   const db = cloudant.db.use('shopping');
 
   chain.params.doc = fixAPIEmptyArray(chain.params.doc);
@@ -27,4 +27,8 @@ const returnData = chain => Promise.resolve(chain.data);
 const main = params => createDoc({ params })
   .then(returnData);
 
-exports.main = main;
+module.exports = {
+  main,
+  fixAPIEmptyArray,
+  createDoc,
+};
