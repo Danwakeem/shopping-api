@@ -19,9 +19,17 @@ const getRevId = (chain) => {
     });
 };
 
+const fixAPIEmptyArray = (doc) => {
+  if ('items' in doc && _.isObject(doc.items) && !_.isArray(doc.items)) doc.items = [];
+  if ('sharedWith' in doc && _.isObject(doc.sharedWith) && !_.isArray(doc.sharedWith)) doc.sharedWith = [];
+  return doc;
+};
+
 const updateDoc = (chain) => {
   const cloudant = new Cloudant({ url: chain.params.cloudantUrl, plugins: 'promises' });
   const db = cloudant.db.use('shopping');
+
+  chain.params.doc = fixAPIEmptyArray(chain.params.doc);
 
   return db.insert(chain.params.doc)
     .then(data => _.merge(chain, { data }));
