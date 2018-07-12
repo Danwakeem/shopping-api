@@ -1,38 +1,25 @@
-const mongo = require('./../../shared/mongo.lb');
+const Cloudant = require('@cloudant/cloudant');
 const _ = require('lodash');
-const mongoClient = require('mongodb').MongoClient;
 
 const parseUserId = (params) => {
-  if ('userId' in params) return Promise.resolve(params);
+  if ('userId' in params) return Promise.resolve({ params });
   if (!('__ow_headers' in params)) return Promise.reject({ message: 'Missing headers' });
   params.userId = params.__ow_headers['x-forwarded-url'].split('/').pop();
-  return Promise.resolve(params);
+  return Promise.resolve({ params });
 };
 
 const queryDB = (chain) => {
-  const db = chain.db.db('shopping');
-  const collection = db.collection('list');
-  const query = mongo.buildWhereModel({
-    where: {
-      or: [
-        { userId: chain.params.userId },
-        { sharedWith: chain.params.userId },
-      ],
-    },
-  });
-  return collection.find(query).toArray()
-    .then(data => _.merge(chain, { data }));
+  const cloudant = new Cloudant({ url: chain.params.cloudantUrl, plugins: 'promises' });
+  const db = cloudant.db.use('shopping');
+
+  return db.view('user', 'find', { key: chain.params.userId, include_docs: true })
+    .then(data => _.merge(chain, { data: _.map(data.rows, r => r.doc) }));
 };
 
-const closeConnection = (chain) => {
-  chain.db.close();
-  return Promise.resolve({ data: chain.data });
-};
+const returnData = chain => Promise.resolve({ data: chain.data });
 
 const main = params => parseUserId(params)
-  .then(() => mongoClient.connect(params.mongo))
-  .then(db => ({ db, params }))
   .then(queryDB)
-  .then(closeConnection);
+  .then(returnData);
 
 exports.main = main;

@@ -1,25 +1,22 @@
-const { MongoClient } = require('mongodb');
+const Cloudant = require('@cloudant/cloudant');
 const _ = require('lodash');
 
 const createDoc = (chain) => {
-  const db = chain.db.db('shopping');
-  const collection = db.collection('list');
+  const cloudant = new Cloudant({ url: chain.params.cloudantUrl, plugins: 'promises' });
+  const db = cloudant.db.use('shopping');
 
-  return collection.insertOne(chain.params.doc)
+  return db.insert(chain.params.doc)
     .then((data) => {
-      chain.params.doc.id = data.insertedId;
+      chain.params.doc.id = data.id;
+      chain.params.doc._id = data.id;
+      chain.params.doc._rev = data.rev;
       return _.merge(chain, { data: chain.params.doc });
     });
 };
 
-const closeConnection = (chain) => {
-  chain.db.close();
-  return Promise.resolve(chain.data);
-};
+const returnData = chain => Promise.resolve(chain.data);
 
-const main = params => MongoClient.connect(params.mongo)
-  .then(db => ({ db, params }))
-  .then(createDoc)
-  .then(closeConnection);
+const main = params => createDoc({ params })
+  .then(returnData);
 
 exports.main = main;

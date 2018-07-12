@@ -9,16 +9,17 @@
     "test:watch": "mocha tests/* --recursive --watch",
     "test": "mocha tests/* --recursive",
     "all": "concurrently \"npm run test:watch\" \"npm run lint:watch\"",
-    "zip": "node_modules/gulp/bin/gulp.js zip",
-    "get:find": "serverless-sim ./GET/find/index --serverlessConfig ./dev.config.json --param userId 5b42b39a3fdc6f0007cbd82e",
-    "get:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json --param id 5b42b39a3fdc6f0007cbd82e",
-    "delete:id": "serverless-sim ./DELETE/id/index --serverlessConfig ./dev.config.json --param id 5b42b7bc89205b00061e9986",
+    "zip": "echo 'Hello there'",
+    "get:find": "serverless-sim ./GET/find/index --serverlessConfig ./dev.config.json --param userId RDMxMzBDNjZSRE14TXpCRE5qWXRORGhETnkwME5UQXhMVUUzUWpVdE5rUXpOek5DTURaRk5EZEI0OEM3UkRNeE16QkROall0TkRoRE55MDBOVEF4TFVFM1FqVXROa1F6TnpOQ01EWkZORGRCNDUwMVJETXhNekJETmpZdE5EaEROeTAwTlRBeExVRTNRalV0TmtRek56TkNNRFpGTkRkQkE3QjVSRE14TXpCRE5qWXRORGhETnkwME5UQXhMVUUzUWpVdE5rUXpOek5DTURaRk5EZEI2RDM3M0IwNkU0N0E=",
+    "get:id": "serverless-sim ./GET/id/index --serverlessConfig ./dev.config.json --param id f8e0e881682d35adedf20b7d37c266c8",
+    "delete:id": "serverless-sim ./DELETE/id/index --serverlessConfig ./dev.config.json --param id f8e0e881682d35adedf20b7d37c266c8",
     "post:create": "serverless-sim ./POST/create/index --serverlessConfig ./dev.config.json",
-    "put:id": "serverless-sim ./PUT/id/index --serverlessConfig ./dev.config.json --param id 5b42baedb18b1e0006a4e045"
+    "put:id": "serverless-sim ./PUT/id/index --serverlessConfig ./dev.config.json --param id f8e0e881682d35adedf20b7d37c266c8"
   },
   "author": "Danwakeem",
   "license": "ISC",
   "devDependencies": {
+    "@cloudant/cloudant": "^2.3.0",
     "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
@@ -37,7 +38,6 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
-    "gulp-zip": "^4.1.0",
-    "mongodb": "^3.1.1"
+    "gulp-zip": "^4.1.0"
   }
 }
