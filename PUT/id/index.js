@@ -27,7 +27,7 @@ const updateDoc = (chain) => {
     .then(data => _.merge(chain, { data }));
 };
 
-const returnData = (chain) => Promise.resolve(chain.data);
+const returnData = chain => Promise.resolve(chain.data);
 
 const main = params => parseId(params)
   .then(getRevId)
