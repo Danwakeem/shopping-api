@@ -27,4 +27,4 @@ wsk action update "${OPWNWHISK_PACKAGE}/deleteById" DELETE/id/index.js --kind no
 
 wsk action update "${OPWNWHISK_PACKAGE}/create" POST/create/index.js --kind nodejs:8 -t 300000
 
-wsk action update "${OPWNWHISK_PACKAGE}/updateById" PUT/id/index.js --kind nodejs:8 -t 300000
+wsk action update "${OPWNWHISK_PACKAGE}/updateById" build/PUT/id.zip --kind nodejs:8 -t 300000

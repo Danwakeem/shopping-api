@@ -1,5 +1,6 @@
 const Cloudant = require('@cloudant/cloudant');
 const _ = require('lodash');
+const PubNub = require('pubnub');
 
 const parseId = (params) => {
   if ('id' in params) return Promise.resolve({ params });
@@ -35,11 +36,29 @@ const updateDoc = (chain) => {
     .then(data => _.merge(chain, { data }));
 };
 
+const publishPubNubMessage = (chain) => {
+  if ('item' in chain.params) {
+    const pubnub = new PubNub({
+      publishKey : chain.params.pubnub,
+    });
+    const publishConfig = {
+      channel : "estimate",
+      message : chain.params.item,
+    };
+    return new Promise((resolve) => {
+      pubnub.publish(publishConfig, () => {
+        resolve(chain);
+      });
+    });
+  } else return Promise.resolve(chain);
+};
+
 const returnData = chain => Promise.resolve(chain.data);
 
 const main = params => parseId(params)
   .then(getRevId)
   .then(updateDoc)
+  .then(publishPubNubMessage)
   .then(returnData);
 
 module.exports = {
@@ -49,4 +68,5 @@ module.exports = {
   fixAPIEmptyArray,
   updateDoc,
   returnData,
+  publishPubNubMessage,
 };

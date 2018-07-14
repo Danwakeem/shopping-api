@@ -4,7 +4,7 @@ const gulpif = require('gulp-if');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 
-const zipper = (name) => gulp.src([`${name}/*.js`, 'shared/**.*', 'node_modules/**', 'package.json'], { base : "." })
+const zipper = (name) => gulp.src([`${name}/*.js`, 'node_modules/**', 'package.json'], { base : "." })
   //.pipe(gulpif(`${name}/*.js`, replace(/require\('\.\/\.\.\/\.\.\/shared.*/g, "require('./shared/mongo.lb');")))
   .pipe(gulpif(`${name}/*.js`, replace(`const mongo = require('./../../shared/mongo.lb');`, `const mongo = require('./shared/mongo.lb');`)))
   .pipe(gulpif(`${name}/*.js`, rename((path) => path.dirname = '')))
@@ -23,8 +23,8 @@ gulp.task('zip:PUT/id:id', () => zipper('PUT/id'));
 
 gulp.task('zip', [
   'zip:PUT/id:id',
-  'zip:POST/create:create',
-  'zip:DELETE/id:id',
-  'zip:id:id',
-  'zip:find:find',
+  // 'zip:POST/create:create',
+  // 'zip:DELETE/id:id',
+  // 'zip:id:id',
+  // 'zip:find:find',
 ]);
