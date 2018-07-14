@@ -40,7 +40,8 @@ const publishPubNubMessage = (chain) => {
   if ('item' in chain.params) {
     console.log('PUBLISHING');
     const pubnub = new PubNub({
-      publishKey : chain.params.pubnub,
+      publishKey: chain.params.pubnub,
+      subscribeKey: chain.params.subnub,
     });
     const publishConfig = {
       channel : "estimate",
