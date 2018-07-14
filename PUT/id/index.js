@@ -38,6 +38,7 @@ const updateDoc = (chain) => {
 
 const publishPubNubMessage = (chain) => {
   if ('item' in chain.params) {
+    console.log('PUBLISHING');
     const pubnub = new PubNub({
       publishKey : chain.params.pubnub,
     });
@@ -46,11 +47,16 @@ const publishPubNubMessage = (chain) => {
       message : chain.params.item,
     };
     return new Promise((resolve) => {
-      pubnub.publish(publishConfig, () => {
+      pubnub.publish(publishConfig, (status, res) => {
+        console.log(JSON.stringify(status));
+        console.log(JSON.stringify(res));
         resolve(chain);
       });
     });
-  } else return Promise.resolve(chain);
+  } else {
+    console.log('NO MESSAGE TO PUBLISH');
+    return Promise.resolve(chain);
+  }
 };
 
 const returnData = chain => Promise.resolve(chain.data);
