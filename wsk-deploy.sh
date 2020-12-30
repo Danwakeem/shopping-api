@@ -19,12 +19,12 @@ wsk property get
 # wsk package update "${OPWNWHISK_PACKAGE}" -P "${WSK_CONFIG}"
 
 # Deploy Salesforce DatedConversionRate Sync
-wsk action update "${OPWNWHISK_PACKAGE}/getByUserId" GET/find/index.js --kind nodejs:8 -t 300000
+# wsk action update "${OPWNWHISK_PACKAGE}/getByUserId" GET/find/index.js --kind nodejs:12 -t 300000
 
-wsk action update "${OPWNWHISK_PACKAGE}/getById" GET/id/index.js --kind nodejs:8 -t 300000
+# wsk action update "${OPWNWHISK_PACKAGE}/getById" GET/id/index.js --kind nodejs:12 -t 300000
 
-wsk action update "${OPWNWHISK_PACKAGE}/deleteById" DELETE/id/index.js --kind nodejs:8 -t 300000
+# wsk action update "${OPWNWHISK_PACKAGE}/deleteById" DELETE/id/index.js --kind nodejs:12 -t 300000
 
-wsk action update "${OPWNWHISK_PACKAGE}/create" POST/create/index.js --kind nodejs:8 -t 300000
+# wsk action update "${OPWNWHISK_PACKAGE}/create" POST/create/index.js --kind nodejs:12 -t 300000
 
-wsk action update "${OPWNWHISK_PACKAGE}/updateById" build/PUT/id.zip --kind nodejs:8 -t 300000
+wsk action update "${OPWNWHISK_PACKAGE}/updateById" build/PUT/id.zip --kind nodejs:12 -t 300000

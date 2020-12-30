@@ -16,7 +16,25 @@ There is a config file for `env` params in my dropbox :)
 There is an API definition file in my dropbox :)
 
 ## Deploy
-I removed all build steps when moving to `cloudant` so the `gulpfile` is not longer needed to deploy
+These have all been updated to node.js 12 in IBM but not locally :)
+
+To login to IBM CLI
+
+```
+ibmcloud login
+```
+
+To login to org/space
+
+```
+ibmcloud target ibmcloud target -o danwakeem@gmail.com -s Shopping
+```
+
+To deploy update API
+
+```
+ibmcloud fn action update "shopping/updateById" build/PUT/id.zip --kind nodejs:12 -t 300000
+```
 
 
 ## TODO
