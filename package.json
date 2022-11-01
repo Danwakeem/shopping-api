@@ -37,7 +37,7 @@
     "should": "^13.1.0"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-zip": "^4.1.0",
     "pubnub": "^4.21.2"
